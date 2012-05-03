@@ -5,13 +5,13 @@
 //
 
 #import "MasterViewController.h"
-
 #import "DetailViewController.h"
+#import "InternalViewsViewController.h"
 
 @implementation MasterViewController
 
 @synthesize detailViewController = _detailViewController;
-
+@synthesize internalViewsViewController = _internalViewsViewController;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -26,6 +26,7 @@
 - (void)dealloc
 {
     [_detailViewController release];
+    [_internalViewsViewController release];
     [super dealloc];
 }
 
@@ -164,10 +165,15 @@
         if (!self.detailViewController) {
             self.detailViewController = [[[DetailViewController alloc] initWithNibName:nil bundle:nil] autorelease];
         }
-        [self.navigationController pushViewController:self.detailViewController animated:YES];}
+        [self.navigationController pushViewController:self.detailViewController animated:YES];
+    }
     
     if (indexPath.row == 1)
     {
+        if (!self.internalViewsViewController) {
+            self.internalViewsViewController = [[[InternalViewsViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+        }
+        [self.navigationController pushViewController:self.internalViewsViewController animated:YES];
     }
 }
 @end

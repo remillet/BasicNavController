@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A0C95D615525D3B00B5D98B /* InternalViewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C95D515525D3B00B5D98B /* InternalViewsViewController.m */; };
 		9A841870153FE53B00FEBD60 /* REMPentagonUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A84186F153FE53B00FEBD60 /* REMPentagonUIView.m */; };
 		CC38E8FA146D8DA9002C7F4C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC38E8F9146D8DA9002C7F4C /* UIKit.framework */; };
 		CC38E8FC146D8DA9002C7F4C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC38E8FB146D8DA9002C7F4C /* Foundation.framework */; };
@@ -20,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A0C95D415525D3B00B5D98B /* InternalViewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InternalViewsViewController.h; path = navDemo/InternalViewsViewController.h; sourceTree = "<group>"; };
+		9A0C95D515525D3B00B5D98B /* InternalViewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InternalViewsViewController.m; path = navDemo/InternalViewsViewController.m; sourceTree = "<group>"; };
 		9A84186E153FE53A00FEBD60 /* REMPentagonUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMPentagonUIView.h; sourceTree = "<group>"; };
 		9A84186F153FE53B00FEBD60 /* REMPentagonUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMPentagonUIView.m; sourceTree = "<group>"; };
 		CC38E8F5146D8DA9002C7F4C /* navDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = navDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +59,8 @@
 		CC38E8EA146D8DA8002C7F4C = {
 			isa = PBXGroup;
 			children = (
+				9A0C95D415525D3B00B5D98B /* InternalViewsViewController.h */,
+				9A0C95D515525D3B00B5D98B /* InternalViewsViewController.m */,
 				CC38E8FF146D8DA9002C7F4C /* navDemo */,
 				CC38E8F8146D8DA9002C7F4C /* Frameworks */,
 				CC38E8F6146D8DA9002C7F4C /* Products */,
@@ -175,6 +180,7 @@
 				CC38E90D146D8DA9002C7F4C /* MasterViewController.m in Sources */,
 				CC38E910146D8DA9002C7F4C /* DetailViewController.m in Sources */,
 				9A841870153FE53B00FEBD60 /* REMPentagonUIView.m in Sources */,
+				9A0C95D615525D3B00B5D98B /* InternalViewsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
