@@ -46,7 +46,7 @@
     [webView loadRequest:request];
     
     //can add buttons for forward and back web navigation
-    CGRect frame = CGRectMake(80, 380, 50, 30);
+    CGRect frame = CGRectMake(80, 360, 50, 30);
     forwardButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [forwardButton setTitle:@"☛" forState:UIControlStateNormal];
     [forwardButton setFrame:frame];
@@ -54,7 +54,7 @@
     [forwardButton addTarget:webView action:@selector(goForward) forControlEvents:UIControlEventTouchUpInside];
     
     //can add buttons for forward and back web navigation
-    frame = CGRectMake(20, 380, 50, 30);
+    frame = CGRectMake(20, 360, 50, 30);
     backButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [backButton setTitle:@"☚" forState:UIControlStateNormal];
     [backButton setFrame:frame];

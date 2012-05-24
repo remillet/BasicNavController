@@ -7,12 +7,13 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 #import "InternalViewsViewController.h"
+#import "TextViewController.h"
 
 @implementation MasterViewController
 
 @synthesize detailViewController = _detailViewController;
 @synthesize internalViewsViewController = _internalViewsViewController;
-
+@synthesize textViewController = _textViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,7 +48,7 @@
     //will show "Back".
     
     UIBarButtonItem *temporaryBarButtonItem=[[UIBarButtonItem alloc] init];
-    temporaryBarButtonItem.title=@"Zurück";
+//    temporaryBarButtonItem.title=@"Zurückk";
     self.navigationItem.backBarButtonItem = temporaryBarButtonItem;
     [temporaryBarButtonItem release];
 }
@@ -93,7 +94,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 3;
 }
 
 // Customize the appearance of table view cells.
@@ -111,10 +112,11 @@
     
     // Configure the cell.
     if (indexPath.row == 0)
-        cell.textLabel.text = NSLocalizedString(@"Detail", @"Detail");
-    else
-        if (indexPath.row == 1)
-            cell.textLabel.text = NSLocalizedString(@"web", @"web");
+        cell.textLabel.text = NSLocalizedString(@"Pentagon", @"Pentagon");
+    else if (indexPath.row == 1)
+		cell.textLabel.text = NSLocalizedString(@"Web", @"Web");
+	else if (indexPath.row == 2)
+		cell.textLabel.text = NSLocalizedString(@"Text", @"Text");
     
     return cell;
 }
@@ -174,6 +176,14 @@
             self.internalViewsViewController = [[[InternalViewsViewController alloc] initWithNibName:nil bundle:nil] autorelease];
         }
         [self.navigationController pushViewController:self.internalViewsViewController animated:YES];
+    }
+
+    if (indexPath.row == 2)
+    {
+        if (!self.textViewController) {
+            self.textViewController = [[[TextViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+        }
+        [self.navigationController pushViewController:self.textViewController animated:YES];
     }
 }
 @end

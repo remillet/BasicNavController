@@ -38,6 +38,9 @@
     return self;
 }
 
+static NSString *CellIdentifier = @"Cell";
+UITableViewCell *cell = nil;
+
 - (void)makePentagon:(CGContextRef)context atPoint:(CGPoint)point
 {
     CGPoint PointOrigin = point;
