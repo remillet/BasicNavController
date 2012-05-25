@@ -60,6 +60,8 @@
     [backButton setFrame:frame];
     [webView addSubview:backButton];
     [backButton addTarget:webView action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+	
+
 }
 
 

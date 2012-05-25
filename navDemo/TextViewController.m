@@ -65,7 +65,34 @@
 	self.textView.delegate = self;
 	self.textView.backgroundColor = [UIColor whiteColor];
 	
-	self.textView.text = @"Look, how the floor of heaven\nIs thick inlaid with patines of bright gold;\nThere's not the smallest orb which thou behold'st\nBut in his motion like an angel sings ...\nSuch harmony is in immortal souls;\nBut, whilst this muddy vesture of decay\nDoth grossly close it in, we cannot hear it.\n\n";
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSLog(@"documentsDirectory %@\n", documentsDirectory);
+	
+	//make a file name to read the text view data from the documents directory:
+    NSString *fileName = [NSString stringWithFormat:@"%@/textViewContent.txt", 
+                          documentsDirectory];
+
+	//Read the second string.
+	NSError *error = nil;
+    NSString *string2FromFileAtPath = [[NSString alloc]
+                                       initWithContentsOfFile:fileName
+                                       encoding:NSUTF8StringEncoding
+                                       error:&error];
+    if (error) {
+        NSLog(@"Error reading file at %@\n%@\n",
+              fileName, [error localizedFailureReason]);
+        [error release];
+        error = nil;
+    }
+    NSLog(@"text view data %@\n", string2FromFileAtPath);
+	
+	if (string2FromFileAtPath) {
+		self.textView.text = string2FromFileAtPath;
+	} else {
+		self.textView.text = @"Look, how the floor of heaven\nIs thick inlaid with patines of bright gold;\nThere's not the smallest orb which thou behold'st\nBut in his motion like an angel sings ...\nSuch harmony is in immortal souls;\nBut, whilst this muddy vesture of decay\nDoth grossly close it in, we cannot hear it.\n\n";
+	}
+
 	self.textView.returnKeyType = UIReturnKeyDefault;
 	self.textView.keyboardType = UIKeyboardTypeDefault;	// use the default type input method (entire keyboard)
 	self.textView.scrollEnabled = YES;
@@ -80,9 +107,22 @@
 
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+	NSLog(@"View did appear.");	
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+	NSLog(@"View did disappear.");	
+}
+
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+	
+	//read the file (if it exists) back into the string
+	NSLog(@"Read the string from the file now.");
 	
 	self.title = NSLocalizedString(@"TextViewTitle", @"");
 	[self setupTextView];
@@ -96,6 +136,8 @@
 {
 	[super viewDidUnload];
 	
+	NSLog(@"Save the string to a file now.");
+
 	self.textView = nil;
 }
 
@@ -103,12 +145,39 @@
 
 - (void)saveAction:(id)sender
 {
+	NSError *error = nil;
+
 	//Text view has been dismissed. Resign first responder, which will remove the keypad.
 	//
 	[self.textView resignFirstResponder];
 	self.navigationItem.rightBarButtonItem = nil;	// this will remove the "save" button
     //This is your opportunity to save the text.
-    NSLog(@"%@", self.textView.text);
+    NSLog(@"Save action method called: %@", self.textView.text);
+	
+	//Use writeToFile to write an object to a file in a known directory
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSLog(@"documentsDirectory %@\n", documentsDirectory);
+
+	//make a file name to write the data to the documents directory:
+    NSString *fileName = [NSString stringWithFormat:@"%@/textViewContent.txt", 
+                          documentsDirectory];
+
+    //Save content to the documents directory
+    [self.textView.text writeToFile:fileName 
+               atomically:NO 
+                 encoding:NSUTF8StringEncoding 
+                    error:&error];
+	
+	if (error) {
+        NSLog(@"Error writing file at %@\n%@\n", fileName, [error localizedFailureReason]);
+        [error release];
+        error = nil;
+    } else {
+		NSLog(@"Successfully wrote text to file at %@\n", fileName);
+	}
+
+
 }
 
 
